@@ -6,4 +6,4 @@ COPY . .
 
 RUN mvn clean install -DskipTests
 
-CMD ["java", "-jar", "target/society-backend-0.0.1-SNAPSHOT.jar"]git add Dockerfile
+CMD ["java", "-jar", "target/society-backend-0.0.1-SNAPSHOT.jar"]
