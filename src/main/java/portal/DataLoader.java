@@ -32,7 +32,8 @@ User user = userRepo.findByEmail("test@gmail.com")
         newUser.setPassword("1234");
         return userRepo.save(newUser);
     });
-           
+           societyRepo.deleteAll();
+
         if (societyRepo.count() == 0) {
 
 
@@ -96,7 +97,6 @@ User user = userRepo.findByEmail("test@gmail.com")
     "/Uploads/avant1.png",
     "/Uploads/avant2.png"
 ))
-.logoUrl("/Uploads/avant.png")
 .logoUrl("https://society-backend-r6pe.onrender.com/Uploads/avant.png")
 .admin(user)
                     .members(List.of(user))
