@@ -24,14 +24,17 @@ public class DataLoader {
         return args -> {
 
             // 🔥 Get user (admin)
-            User user = userRepo.findByEmail("test@gmail.com").orElse(null);
+User user = userRepo.findByEmail("test@gmail.com")
+    .orElseGet(() -> {
+        User newUser = new User();
+        newUser.setName("Admin");
+        newUser.setEmail("test@gmail.com");
+        newUser.setPassword("1234");
+        return userRepo.save(newUser);
+    });
+           
+        if (societyRepo.count() == 0) {
 
-            if (user == null) {
-                System.out.println("⚠ User not found, skipping data load");
-                return;
-            }
-
-            societyRepo.deleteAll();
 
             Society robogyan = Society.builder()
                     .name("ROBOGYAN")
@@ -162,6 +165,9 @@ societyRepo.save(confluenz);
 System.out.println("✅ CONFLUENZ inserted");
 
             System.out.println("🔥 Data loading complete");
+}
+        System.out.println("🔥 Data loading complete");
+
         };
-    }
+        }
 }
