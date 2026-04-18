@@ -61,7 +61,7 @@ User user = userRepo.findByEmail("test@gmail.com")
                     .website("https://robogyan.tech/")
                     .youtube("robogyan_official")
                     .linkedin("robogyan")
-                    .logoUrl("http://localhost:8080/Uploads/robogyan.png")
+                    .logoUrl("https://society-backend-r6pe.onrender.com/Uploads/robogyan.png")
                     .admin(user)
 .members(List.of(user))
                     .build();
@@ -97,8 +97,8 @@ User user = userRepo.findByEmail("test@gmail.com")
     "/Uploads/avant2.png"
 ))
 .logoUrl("/Uploads/avant.png")
-                    .logoUrl("http://localhost:8080/Uploads/avant.png")
-                    .admin(user)
+.logoUrl("https://society-backend-r6pe.onrender.com/Uploads/avant.png")
+.admin(user)
                     .members(List.of(user))
                     .build();
 
