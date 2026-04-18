@@ -123,4 +123,33 @@ public class SocietyService {
                 .coreTeam(coreTeam)
                 .build();
     }
+    // 🔥 GET ALL SOCIETIES (FOR EVERYONE)
+public List<SocietyCardDTO> getAllSocieties() {
+
+    List<Society> societies = repo.findAll();
+
+    return societies.stream()
+            .map(s -> {
+
+                List<String> memberNames = s.getMembers() != null
+                        ? s.getMembers().stream()
+                        .map(User::getName)
+                        .limit(5)
+                        .collect(Collectors.toList())
+                        : List.of();
+
+                return SocietyCardDTO.builder()
+                        .id(s.getId())
+                        .name(s.getName())
+                        .description(s.getDescription())
+                        .logoUrl(s.getLogoUrl())
+                        .instagram(s.getInstagram())
+                        .adminName(
+                                s.getAdmin() != null ? s.getAdmin().getName() : "N/A"
+                        )
+                        .members(memberNames)
+                        .build();
+            })
+            .collect(Collectors.toList());
+}
 }

@@ -60,7 +60,7 @@ public class DataLoader {
                     .linkedin("robogyan")
                     .logoUrl("http://localhost:8080/Uploads/robogyan.png")
                     .admin(user)
-                    .members(List.of())
+.members(List.of(user))
                     .build();
 
             societyRepo.save(robogyan);
@@ -96,7 +96,7 @@ public class DataLoader {
 .logoUrl("/Uploads/avant.png")
                     .logoUrl("http://localhost:8080/Uploads/avant.png")
                     .admin(user)
-                    .members(List.of())
+                    .members(List.of(user))
                     .build();
 
             societyRepo.save(avant);
@@ -155,7 +155,7 @@ public class DataLoader {
     .instagram("confluenz")
     .logoUrl(randomImage)
     .admin(user)
-    .members(List.of())
+    .members(List.of(user))
     .build();
 
 societyRepo.save(confluenz);

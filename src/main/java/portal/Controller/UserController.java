@@ -18,7 +18,19 @@ public class UserController {
 
     private final SocietyService service;
 
-    // 🔥 MEMBER DASHBOARD (UPDATED)
+    // 🔥 NEW: ALL SOCIETIES (FOR EVERYONE)
+// 🔥 NEW: ALL SOCIETIES (PUBLIC)
+@GetMapping("/societies")
+public ResponseEntity<?> getAllSocieties() {
+    try {
+        List<SocietyCardDTO> societies = service.getAllSocieties();
+        return ResponseEntity.ok(societies);
+    } catch (Exception e) {
+        return ResponseEntity.status(500).body("Failed to fetch societies");
+    }
+}
+
+    // 🔥 MEMBER DASHBOARD (OPTIONAL - future use)
     @GetMapping("/my-societies")
     public ResponseEntity<?> getMySocieties(@RequestParam String email) {
         try {
@@ -31,7 +43,7 @@ public class UserController {
         }
     }
 
-    // 🔥 DETAIL PAGE
+    // 🔥 DETAIL PAGE (KEEP SAME)
     @GetMapping("/society/{id}")
     public ResponseEntity<?> getSociety(@PathVariable Long id) {
         try {
