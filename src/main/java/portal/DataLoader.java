@@ -55,10 +55,10 @@ public class DataLoader {
                                 "In one of the largest on-campus technical events of the year, Robogyan hosted the Internal Hackathon for SIH 2025. Over 1,100 students pushed their limits across two days of intense problem-solving and prototyping. The event was highly commended by our respected Director for its seamless execution and high-caliber output",
                                 "The Result: 5 teams from our college advanced to the SIH National Finals - a success rate that surpassed several major IITs and solidified Robogyan's reputation as a powerhouse for practical engineering.",
 List.of(
-    "https://society-backend-r6pe.onrender.com/uploads/robogyan1.png",
-    "https://society-backend-r6pe.onrender.com/uploads/robogyan2.png",
-    "https://society-backend-r6pe.onrender.com/uploads/robogyan3.png",
-    "https://society-backend-r6pe.onrender.com/uploads/robogyan4.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan2.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan3.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan4.png"
 ),
                                 List.of(  "Amogh Saxena – President",
                         "Aditya Goel – Vice President",
@@ -72,7 +72,7 @@ List.of(
                                 "https://robogyan.tech/",
                                 "robogyan_official",
                                 "https://www.linkedin.com/company/robogyan",
-                                "https://society-backend-r6pe.onrender.com/uploads/robogyan.png",
+                                "https://society-backend-r6pe.onrender.com/Uploads/robogyan.png",
                             
                                 user
                         ),
@@ -95,8 +95,8 @@ List.of(
                                 "In one of the most visually immersive and large-scale creative contributions to the college’s annual fest, Utkarsh 2026, Avant Garde played a central role in bringing the fest theme “Virasat se Vikas Tak – Evolution Through Heritage” to life...",
                                 "Avant Garde successfully delivered a cohesive visual identity for Utkarsh...",
                                List.of(
-    "https://society-backend-r6pe.onrender.com/uploads/avant1.png",
-    "https://society-backend-r6pe.onrender.com/uploads/avant2.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/avant1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/avant2.png"
 ),
 
 List.of(
@@ -113,7 +113,7 @@ List.of(
                                  "",                    // website (add later if needed)
     "@avantgarde5535",     // youtube
     "",   
-     "https://society-backend-r6pe.onrender.com/uploads/avant.png",
+     "https://society-backend-r6pe.onrender.com/Uploads/avant.png",
                                 user
                         ),
 
@@ -147,7 +147,7 @@ createSociety(
     "• Regular workshops and hands-on training",
 
     List.of(
-    "https://society-backend-r6pe.onrender.com/uploads/confluez1.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/confluez1.png"
     
 ),
 
@@ -168,7 +168,7 @@ createSociety(
     "",            // youtube
     "https://www.linkedin.com/company/confluenz-adgips/",
 
-        "https://society-backend-r6pe.onrender.com/uploads/confluez.png"
+        "https://society-backend-r6pe.onrender.com/Uploads/confluez.png"
 ,
 
     user
@@ -209,7 +209,7 @@ createSociety(
     "",                // website
     "",                // youtube
     "",                // linkedin
-                                "https://society-backend-r6pe.onrender.com/uploads/sport.png",
+                                "https://society-backend-r6pe.onrender.com/Uploads/sport.png",
                                 user
                         ),
                                      createSociety(
@@ -257,7 +257,7 @@ createSociety(
     "",              // youtube
     "",              // linkedin
 
-"https://society-backend-r6pe.onrender.com/uploads/gdc.png",
+"https://society-backend-r6pe.onrender.com/Uploads/gdc.png",
     user
 ),
 createSociety(
@@ -313,7 +313,7 @@ createSociety(
     "",                 // youtube
     "https://www.linkedin.com/company/enactus-adgips/",
 
-"https://society-backend-r6pe.onrender.com/uploads/enactus.png",
+"https://society-backend-r6pe.onrender.com/Uploads/enactus.png",
 
     user
 ),
@@ -342,9 +342,9 @@ createSociety(
     "• Consistent growth and high-energy performances",
 
    List.of(
-    "https://society-backend-r6pe.onrender.com/uploads/insyc1.png",
-    "https://society-backend-r6pe.onrender.com/uploads/insyc2.png",
-    "https://society-backend-r6pe.onrender.com/uploads/insyc3.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/insyc1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/insyc2.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/insyc3.png"
 ),
 
     List.of(
@@ -365,7 +365,7 @@ createSociety(
     "",                            // youtube
     "",                            // linkedin
 
-"https://society-backend-r6pe.onrender.com/uploads/insyc.png",
+"https://society-backend-r6pe.onrender.com/Uploads/insyc.png",
 
     user
 ),
@@ -410,7 +410,7 @@ createSociety(
     "",                      // youtube
     "https://www.linkedin.com/company/word-wizards-adgips/",
 
-"https://society-backend-r6pe.onrender.com/uploads/wizard.png",
+"https://society-backend-r6pe.onrender.com/Uploads/wizard.png",
 
     user
 ),
@@ -461,7 +461,7 @@ createSociety(
     "",             // youtube
     "",             // linkedin
 
-"https://society-backend-r6pe.onrender.com/uploads/yak.png",
+"https://society-backend-r6pe.onrender.com/Uploads/yak.png",
 
     user
 ),
@@ -493,10 +493,10 @@ createSociety(
     "• Continuous engagement through DSA and aptitude programs",
 
    List.of(
-    "https://society-backend-r6pe.onrender.com/uploads/geek1.png",
-    "https://society-backend-r6pe.onrender.com/uploads/geek2.png",
-    "https://society-backend-r6pe.onrender.com/uploads/geek3.png",
-    "https://society-backend-r6pe.onrender.com/uploads/geek4.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/geek1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/geek2.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/geek3.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/geek4.png"
 ),
        
     List.of(
@@ -516,7 +516,7 @@ createSociety(
     "geeksforgeeks_adgips",  // youtube channel
     "https://www.linkedin.com/company/geeksforgeeks-student-chapter-adgips/",
 
-"https://society-backend-r6pe.onrender.com/uploads/geek.png",
+"https://society-backend-r6pe.onrender.com/Uploads/geek.png",
 
     user
 ),
@@ -545,8 +545,8 @@ createSociety(
     "• Built a strong entrepreneurship culture within campus",
 
     List.of(
-        "https://society-backend-r6pe.onrender.com/uploads/ecell1.png",
-        "https://society-backend-r6pe.onrender.com/uploads/ecell2.png"
+        "https://society-backend-r6pe.onrender.com/Uploads/ecell1.png",
+        "https://society-backend-r6pe.onrender.com/Uploads/ecell2.png"
     ),
 
     List.of(
@@ -567,7 +567,7 @@ createSociety(
     "",              // youtube
     "https://www.linkedin.com/company/ecell-adgips/",
 
-    "https://society-backend-r6pe.onrender.com/uploads/ecell.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/ecell.png",
 
     user
 )
