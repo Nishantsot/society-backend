@@ -194,8 +194,11 @@ createSociety(
                                         "• Conducted multiple inter and intra-college sports events\n" +
                                         "• Strong performance and medal wins in IPU Sports Meet\n" +
                                         "• Built an active and competitive sports environment in the college",
-                                List.of("/Uploads/sports1.png", "/Uploads/sports2.png"),
-                                List.of(
+  List.of(
+        "https://via.placeholder.com/310",
+        "https://via.placeholder.com/311"
+    ),
+                                        List.of(
                                         "Ashish Sharma (AIML, 4th Year) – President",
                                         "Nidhi Sinha (IT, 4th Year) – President",
                                         "Parul Sinha (AIDS, 3rd Year) – Vice President",
