@@ -31,4 +31,6 @@ public class SocietyDetailDTO {
 
     // 🔥 ALREADY ADDED
     private List<String> coreTeam;
+        private List<String> images;
+
 }

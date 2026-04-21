@@ -63,6 +63,8 @@ public class SocietyService {
                         s.getAdmin() != null ? s.getAdmin().getName() : "N/A"
                 )
                 .coreTeam(coreTeam)
+                            .images(s.getImages())
+
                 .build();
     }
 
