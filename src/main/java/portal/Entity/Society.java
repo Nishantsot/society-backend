@@ -32,8 +32,16 @@ public class Society {
 
     @Column(length = 1500)
     private String achievements;
-@ElementCollection
-private List<String> images;
+
+    @ElementCollection
+    private List<String> images;
+
+    // ✅ ADD THIS
+    @ElementCollection
+    @CollectionTable(name = "society_core_team", joinColumns = @JoinColumn(name = "society_id"))
+    @Column(name = "member")
+    private List<String> coreTeam;
+
     private String instagram;
     private String website;
     private String youtube;
@@ -41,11 +49,9 @@ private List<String> images;
 
     private String logoUrl; 
 
-    
     @ManyToOne
     private User admin;
 
-    
     @ManyToMany
     private List<User> members;
 }
