@@ -55,10 +55,10 @@ public class DataLoader {
                                 "In one of the largest on-campus technical events of the year, Robogyan hosted the Internal Hackathon for SIH 2025. Over 1,100 students pushed their limits across two days of intense problem-solving and prototyping. The event was highly commended by our respected Director for its seamless execution and high-caliber output",
                                 "The Result: 5 teams from our college advanced to the SIH National Finals - a success rate that surpassed several major IITs and solidified Robogyan's reputation as a powerhouse for practical engineering.",
 List.of(
-    "https://society-backend-r6pe.onrender.com/images/robogyan1.png",
-    "https://society-backend-r6pe.onrender.com/images/robogyan2.png",
-    "https://society-backend-r6pe.onrender.com/images/robogyan3.png",
-    "https://society-backend-r6pe.onrender.com/images/robogyan4.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan2.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan3.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/robogyan4.png"
 ),
                                 List.of(  "Amogh Saxena – President",
                         "Aditya Goel – Vice President",
@@ -95,8 +95,8 @@ List.of(
                                 "In one of the most visually immersive and large-scale creative contributions to the college’s annual fest, Utkarsh 2026, Avant Garde played a central role in bringing the fest theme “Virasat se Vikas Tak – Evolution Through Heritage” to life...",
                                 "Avant Garde successfully delivered a cohesive visual identity for Utkarsh...",
                                List.of(
-    "https://society-backend-r6pe.onrender.com/images/avant1.png",
-    "https://society-backend-r6pe.onrender.com/images/avant2.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/avant1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/avant2.png"
 ),
 
 List.of(
@@ -147,7 +147,7 @@ createSociety(
     "• Regular workshops and hands-on training",
 
     List.of(
-    "https://society-backend-r6pe.onrender.com/confluez1.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/confluez1.png"
     
 ),
 
@@ -168,7 +168,7 @@ createSociety(
     "",            // youtube
     "https://www.linkedin.com/company/confluenz-adgips/",
 
-        "https://society-backend-r6pe.onrender.com/confluez.png"
+        "https://society-backend-r6pe.onrender.com/Uploads/confluez.png"
 ,
 
     user
@@ -342,9 +342,9 @@ createSociety(
     "• Consistent growth and high-energy performances",
 
    List.of(
-    "https://society-backend-r6pe.onrender.com/images/insyc1.png",
-    "https://society-backend-r6pe.onrender.com/images/insyc2.png",
-    "https://society-backend-r6pe.onrender.com/images/insyc3.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/insyc1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/insyc2.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/insyc3.png"
 ),
 
     List.of(
@@ -493,10 +493,10 @@ createSociety(
     "• Continuous engagement through DSA and aptitude programs",
 
    List.of(
-    "https://society-backend-r6pe.onrender.com/images/geek1.png",
-    "https://society-backend-r6pe.onrender.com/images/geek2.png",
-    "https://society-backend-r6pe.onrender.com/images/geek3.png",
-    "https://society-backend-r6pe.onrender.com/images/geek4.png"
+    "https://society-backend-r6pe.onrender.com/Uploads/geek1.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/geek2.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/geek3.png",
+    "https://society-backend-r6pe.onrender.com/Uploads/geek4.png"
 ),
        
     List.of(
@@ -519,8 +519,58 @@ createSociety(
 "https://society-backend-r6pe.onrender.com/Uploads/geek.png",
 
     user
-)
+),
+createSociety(
+    "E-CELL ADGIPS",
 
+    "E-Cell ADGIPS is the official Entrepreneurship Cell of ADGIPS, dedicated to cultivating an entrepreneurial mindset among students. With a strong community of 100+ active members, the society serves as a launchpad for aspiring entrepreneurs, innovators, and leaders. It provides a platform to ideate, collaborate, and execute through flagship events, mentorship networks, incubation support, and hands-on startup experiences. At its core, E-Cell believes every student has the potential to build something meaningful and aims to turn ideas into reality.",
+
+    "To build a thriving entrepreneurial ecosystem where students think boldly, act decisively, and create ventures that drive meaningful change and innovation.",
+
+    "• Action-Oriented Learning through real startup challenges\n" +
+    "• Industry Connect with founders, investors, and mentors\n" +
+    "• Inclusive Innovation across all branches\n" +
+    "• Leadership development through real-world execution\n" +
+    "• Building entrepreneurial mindset and risk-taking ability",
+
+    "Major Event:\n" +
+    "• E-Summit '26 – Flagship entrepreneurship summit (8–10 April 2026)\n" +
+    "• 350+ participants with startup pitching, competitions, and panel discussions\n" +
+    "• Events like Vibe Coding, Evolve X, and investor sessions\n" +
+    "• Participation from industry leaders and Delhi NCR ecosystem",
+
+    "• Successfully organized large-scale E-Summit '26\n" +
+    "• Strong investor and startup ecosystem connections\n" +
+    "• Cross-college participation and recognition\n" +
+    "• Built a strong entrepreneurship culture within campus",
+
+    List.of(
+        "https://society-backend-r6pe.onrender.com/Uploads/ecell1.png",
+        "https://society-backend-r6pe.onrender.com/Uploads/ecell2.png"
+    ),
+
+    List.of(
+        "Dakshyani Murari – President (3rd Year)",
+        "Ish Malik – Vice President (3rd Year)",
+        "Palak Mishra – General Secretary (3rd Year)",
+        "Yuvan Kumar Salina – PR & Sponsorship Lead (3rd Year)",
+        "Deepesh Ahlawat – AIML Lead (3rd Year)",
+        "Garv Mehta – Management Lead (3rd Year)",
+        "Nitya Jamdagni – Creative Lead (3rd Year)",
+        "Lavanaya Khanna – Graphics Lead (2nd Year)",
+        "Alok Chaudhary – Video Editing (2nd Year)"
+    ),
+
+    // 🔥 SOCIAL LINKS
+    "ecelladgips",   // instagram username
+    "",              // website (not provided)
+    "",              // youtube
+    "https://www.linkedin.com/company/ecell-adgips/",
+
+    "https://society-backend-r6pe.onrender.com/Uploads/ecell-logo.png",
+
+    user
+)
                         
 
                 );
