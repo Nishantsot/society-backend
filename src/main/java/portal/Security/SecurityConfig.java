@@ -15,9 +15,12 @@ public class SecurityConfig {
         return http
             .csrf(csrf -> csrf.disable())
 
+            // 🔥 ADD THIS LINE (VERY IMPORTANT)
+            .cors(cors -> {})
+
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()  // ✅ IMPORTANT
-                .anyRequest().permitAll() // 🔥 TEMPORARY FOR TEST
+                .requestMatchers("/api/auth/**").permitAll()
+                .anyRequest().permitAll()
             )
 
             .build();
