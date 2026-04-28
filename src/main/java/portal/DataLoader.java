@@ -573,6 +573,57 @@ createSociety(
     "https://society-backend-r6pe.onrender.com/Uploads/ecell.png",
 
     user
+),
+createSociety(
+    "NSS (National Service Scheme)",
+
+    "NSS is a Ministry of Youth Affairs and Sports public service program focused on developing students through community service. It builds leadership, empathy, and social responsibility through active participation in social initiatives.",
+
+    "To build a community of socially responsible individuals who contribute positively to society and work towards national development.",
+
+    "• Promote social awareness and responsibility\n" +
+    "• Encourage community service participation\n" +
+    "• Develop leadership and teamwork skills\n" +
+    "• Create impact through sustainable initiatives",
+
+    "Major Activities:\n" +
+    "• Donation Drive for underprivileged communities\n" +
+    "• Plantation Drive for environmental awareness\n" +
+    "• POCSO Awareness Campaign\n" +
+    "• Wall of Recognition initiative",
+
+    "• Participation in National Integration Camps (NIC)\n" +
+    "• Volunteers at Khelo India Para Games\n" +
+    "• Volunteers at Khelo India Youth Games\n" +
+    "• Participation in Viksit Bharat Young Leaders Dialogue\n" +
+    "• Strong social impact through multiple campaigns",
+
+    List.of(
+        "https://society-backend-r6pe.onrender.com/Uploads/nss1.png",
+        "https://society-backend-r6pe.onrender.com/Uploads/nss2.png",
+          "https://society-backend-r6pe.onrender.com/Uploads/nss3.png"
+    ),
+
+    List.of(
+        "Sumit Pandey – President (4th Year)",
+        "Maitraiyee – Vice President (3rd Year)",
+        "Parth Jain – Social Media Head (2nd Year)",
+        "Akshat Pal – Social Media Head (2nd Year)",
+        "Rubi Negi – PR Head (3rd Year)",
+        "Sampreeti – Graphics Head (2nd Year)",
+        "Hitesh – Content Head (3rd Year)",
+        "Nakul – Management & Marketing Head (2nd Year)"
+    ),
+
+    // 🔥 SOCIAL LINKS
+    "nss_adgips_ggsipu",   // instagram
+    "",                    // website
+    "",                    // youtube
+    "",                    // linkedin (not provided)
+
+    "https://society-backend-r6pe.onrender.com/Uploads/nss.png",
+
+    user
 )
                         
 
