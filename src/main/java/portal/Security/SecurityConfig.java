@@ -16,16 +16,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        return http
-            .cors(cors -> {}) // ✅ ADD THIS
+        http
+            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ FORCE BIND
             .csrf(csrf -> csrf.disable())
-
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // ✅ VERY IMPORTANT
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // ✅ REQUIRED
                 .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().permitAll()
-            )
-            .build();
+            );
+
+        return http.build();
     }
 
     @Bean
@@ -39,6 +39,9 @@ public class SecurityConfig {
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
+
+        // 🔥 THIS LINE IS IMPORTANT
+        config.setExposedHeaders(List.of("Authorization"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
