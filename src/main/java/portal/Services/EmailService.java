@@ -12,21 +12,25 @@ public class EmailService {
     private final JavaMailSender mailSender;
 
     public void sendEmail(String to, String subject, String body) {
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
+    try {
+        SimpleMailMessage message = new SimpleMailMessage();
 
-            message.setTo(to);
-            message.setSubject(subject);
-            message.setText(body);
+        // ✅ ADD THIS LINE (very important)
+        message.setFrom("Adgips Portal <adgipsportal@gmail.com>");
 
-            mailSender.send(message);
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
 
-            System.out.println("✅ Email sent to: " + to);
+        mailSender.send(message);
 
-        } catch (Exception e) {
-            System.out.println(" Email failed: " + e.getMessage());
-        }
+        System.out.println("✅ Email sent to: " + to);
+
+    } catch (Exception e) {
+        System.out.println("❌ Email failed: " + e.getMessage());
     }
+}
+    
 
     public void sendOtp(String email, String otp) {
 
