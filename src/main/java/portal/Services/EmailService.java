@@ -3,6 +3,7 @@ package portal.Services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
     private final JavaMailSender mailSender;
-
+@Async
     public void sendEmail(String to, String subject, String body) {
     try {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -27,7 +28,7 @@ public class EmailService {
         System.out.println("✅ Email sent to: " + to);
 
     } catch (Exception e) {
-        System.out.println("❌ Email failed: " + e.getMessage());
+e.printStackTrace();
     }
 }
     
