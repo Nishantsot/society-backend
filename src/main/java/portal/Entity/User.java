@@ -7,6 +7,7 @@ import portal.Enum.Role;
 import portal.Enum.Year;
 
 @Entity
+@Table(name = "users")   // ✅ ADD THIS LINE
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
