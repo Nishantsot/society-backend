@@ -1,65 +1,56 @@
 package portal.Services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
 
 @Service
-@RequiredArgsConstructor
 public class EmailService {
 
-    private final JavaMailSender mailSender;
-@Async
-    public void sendEmail(String to, String subject, String body) {
-    try {
-        SimpleMailMessage message = new SimpleMailMessage();
+    @Value("${RESEND_API_KEY}")
+    private String apiKey;
 
-        // ✅ ADD THIS LINE (very important)
-        message.setFrom("Adgips Portal <adgipsportal@gmail.com>");
+    @Value("${RESEND_FROM}")
+    private String from;
 
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(body);
+    private final RestTemplate restTemplate = new RestTemplate();
 
-        mailSender.send(message);
+    private void sendEmail(String to, String subject, String text) {
 
-        System.out.println("✅ Email sent to: " + to);
+        String url = "https://api.resend.com/emails";
 
-    } catch (Exception e) {
-e.printStackTrace();
-    }
-}
-    
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-    public void sendOtp(String email, String otp) {
+        String body = "{"
+                + "\"from\":\"" + from + "\","
+                + "\"to\":[\"" + to + "\"],"
+                + "\"subject\":\"" + subject + "\","
+                + "\"text\":\"" + text + "\""
+                + "}";
 
-        String subject = "🔐 OTP Verification - Society Portal";
+        HttpEntity<String> request = new HttpEntity<>(body, headers);
 
-        String body = "Hello,\n\n"
-                + "Your OTP is: " + otp + "\n\n"
-                + "⏳ Valid for 5 minutes.\n\n"
-                + "⚠️ Do not share this OTP.\n\n"
-                + "Regards,\nSociety Portal Team";
-
-        System.out.println("OTP for " + email + " = " + otp);
-
-        sendEmail(email, subject, body);
+        try {
+            restTemplate.postForEntity(url, request, String.class);
+            System.out.println("✅ Resend Email Sent");
+        } catch (Exception e) {
+            System.out.println("❌ Resend Failed");
+            e.printStackTrace();
+        }
     }
 
-    public void sendResetOtp(String email, String otp) {
+    public void sendOtp(String to, String otp) {
+        sendEmail(to,
+                "Society Portal - OTP Verification",
+                "Your OTP is: " + otp + "\nValid for 5 minutes.");
+    }
 
-        String subject = "🔁 Password Reset OTP";
-
-        String body = "Hello,\n\n"
-                + "Use this OTP to reset your password:\n\n"
-                + "OTP: " + otp + "\n\n"
-                + "Valid for 5 minutes.\n\n"
-                + "If you didn’t request this, ignore it.";
-
-        System.out.println("Reset OTP for " + email + " = " + otp);
-
-        sendEmail(email, subject, body);
+    public void sendResetOtp(String to, String otp) {
+        sendEmail(to,
+                "Society Portal - Password Reset OTP",
+                "Your reset OTP is: " + otp + "\nValid for 5 minutes.");
     }
 }
