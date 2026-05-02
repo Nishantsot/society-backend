@@ -16,43 +16,54 @@ public class EmailService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     private void sendEmail(String to, String subject, String text) {
-  System.out.println("API KEY FULL = [" + apiKey + "]");
+
         System.out.println("🔥 Sending email to: " + to);
 
         String url = "https://api.brevo.com/v3/smtp/email";
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("api-key", apiKey);
+
+        // ✅ IMPORTANT FIX (use add instead of set)
+        headers.add("api-key", apiKey);
+
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         Map<String, Object> body = new HashMap<>();
 
+        // ✅ Sender (must be verified in Brevo)
         Map<String, String> sender = new HashMap<>();
         sender.put("email", "adgipsportal@gmail.com");
         sender.put("name", "Society Portal");
 
         body.put("sender", sender);
 
+        // ✅ Recipient
         List<Map<String, String>> toList = new ArrayList<>();
         Map<String, String> toEmail = new HashMap<>();
         toEmail.put("email", to);
         toList.add(toEmail);
 
         body.put("to", toList);
+
         body.put("subject", subject);
         body.put("textContent", text);
 
-        HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
+        HttpEntity<Map<String, Object>> request =
+                new HttpEntity<>(body, headers);
 
         try {
-            restTemplate.postForEntity(url, request, String.class);
-            System.out.println("✅ Email Sent via Brevo API");
+            ResponseEntity<String> response =
+                    restTemplate.postForEntity(url, request, String.class);
+
+            System.out.println("✅ Email Sent: " + response.getStatusCode());
+
         } catch (Exception e) {
             System.out.println("❌ Email Failed");
             e.printStackTrace();
         }
     }
 
+    // 🔢 OTP Email
     public void sendOtp(String to, String otp) {
         sendEmail(
                 to,
@@ -61,6 +72,7 @@ public class EmailService {
         );
     }
 
+    // 🔁 Reset Password
     public void sendResetOtp(String to, String otp) {
         sendEmail(
                 to,
