@@ -24,7 +24,7 @@ public class EmailService {
         HttpHeaders headers = new HttpHeaders();
 
         // ✅ IMPORTANT FIX (use add instead of set)
-        headers.add("api-key", apiKey);
+headers.add("api-key", apiKey.replaceAll("\\s+", ""));
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
