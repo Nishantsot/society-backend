@@ -1,58 +1,71 @@
 package portal.Services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
+
+import java.util.*;
 
 @Service
 public class EmailService {
 
-    @Autowired
-    private JavaMailSender mailSender;
+    @Value("${BREVO_API_KEY}")
+    private String apiKey;
 
-    // 🔢 OTP Email
-    public void sendOtp(String to, String otp) {
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    private void sendEmail(String to, String subject, String text) {
+
+        System.out.println("🔥 Sending email to: " + to);
+
+        String url = "https://api.brevo.com/v3/smtp/email";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("api-key", apiKey);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> body = new HashMap<>();
+
+        Map<String, String> sender = new HashMap<>();
+        sender.put("email", "adgipsportal@gmail.com");
+        sender.put("name", "Society Portal");
+
+        body.put("sender", sender);
+
+        List<Map<String, String>> toList = new ArrayList<>();
+        Map<String, String> toEmail = new HashMap<>();
+        toEmail.put("email", to);
+        toList.add(toEmail);
+
+        body.put("to", toList);
+        body.put("subject", subject);
+        body.put("textContent", text);
+
+        HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
 
         try {
-            SimpleMailMessage msg = new SimpleMailMessage();
-msg.setFrom("Society Portal <adgipsportal@gmail.com>");
-            msg.setTo(to);
-            msg.setSubject("Society Portal - OTP Verification");
-            msg.setText(
-                    "Hello,\n\n" +
-                    "Your OTP is: " + otp + "\n" +
-                    "Valid for 5 minutes.\n\n" +
-                    "Regards,\nSociety Portal"
-            );
-
-            mailSender.send(msg);
-
-            System.out.println("✅ OTP Email Sent");
-
+            restTemplate.postForEntity(url, request, String.class);
+            System.out.println("✅ Email Sent via Brevo API");
         } catch (Exception e) {
             System.out.println("❌ Email Failed");
             e.printStackTrace();
         }
     }
 
-    // 🔁 Reset Password
+    public void sendOtp(String to, String otp) {
+        sendEmail(
+                to,
+                "Society Portal - OTP Verification",
+                "Your OTP is: " + otp + "\nValid for 5 minutes."
+        );
+    }
+
     public void sendResetOtp(String to, String otp) {
-
-        try {
-            SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("Society Portal <nishantkumar8604@gmail.com>");
-            msg.setTo(to);
-            msg.setSubject("Password Reset OTP");
-            msg.setText("Your OTP is: " + otp);
-
-            mailSender.send(msg);
-
-            System.out.println("✅ Reset Email Sent");
-
-        } catch (Exception e) {
-            System.out.println("❌ Reset Email Failed");
-            e.printStackTrace();
-        }
+        sendEmail(
+                to,
+                "Password Reset OTP",
+                "Your OTP is: " + otp
+        );
     }
 }
