@@ -16,7 +16,7 @@ public class EmailService {
 
         try {
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("Society Portal <nishantkumar8604@gmail.com>");
+msg.setFrom("Society Portal <adgipsportal@gmail.com>");
             msg.setTo(to);
             msg.setSubject("Society Portal - OTP Verification");
             msg.setText(
