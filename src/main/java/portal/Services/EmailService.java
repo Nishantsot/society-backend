@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class EmailService {
 
@@ -16,7 +19,10 @@ public class EmailService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    // 🔥 Common method to send email
     private void sendEmail(String to, String subject, String text) {
+
+        System.out.println("🔥 Sending email to: " + to);
 
         String url = "https://api.resend.com/emails";
 
@@ -24,33 +30,49 @@ public class EmailService {
         headers.set("Authorization", "Bearer " + apiKey);
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        String body = "{"
-                + "\"from\":\"" + from + "\","
-                + "\"to\":[\"" + to + "\"],"
-                + "\"subject\":\"" + subject + "\","
-                + "\"text\":\"" + text + "\""
-                + "}";
+        // ✅ SAFE JSON BODY (no manual string)
+        Map<String, Object> body = new HashMap<>();
+        body.put("from", from);
+        body.put("to", new String[]{to});
+        body.put("subject", subject);
+        body.put("text", text);
 
-        HttpEntity<String> request = new HttpEntity<>(body, headers);
+        HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
 
         try {
-            restTemplate.postForEntity(url, request, String.class);
-            System.out.println("✅ Resend Email Sent");
+            ResponseEntity<String> response =
+                    restTemplate.postForEntity(url, request, String.class);
+
+            System.out.println("✅ Resend Email Sent | Status: " + response.getStatusCode());
+
         } catch (Exception e) {
             System.out.println("❌ Resend Failed");
             e.printStackTrace();
         }
     }
 
+    // 🔢 OTP Email
     public void sendOtp(String to, String otp) {
-        sendEmail(to,
+        sendEmail(
+                to,
                 "Society Portal - OTP Verification",
-                "Your OTP is: " + otp + "\nValid for 5 minutes.");
+                "Hello,\n\n"
+                        + "Your OTP is: " + otp + "\n"
+                        + "This OTP is valid for 5 minutes.\n\n"
+                        + "Do not share this OTP with anyone.\n\n"
+                        + "Regards,\nSociety Portal"
+        );
     }
 
+    // 🔁 Reset Password OTP
     public void sendResetOtp(String to, String otp) {
-        sendEmail(to,
+        sendEmail(
+                to,
                 "Society Portal - Password Reset OTP",
-                "Your reset OTP is: " + otp + "\nValid for 5 minutes.");
+                "Hello,\n\n"
+                        + "Your password reset OTP is: " + otp + "\n"
+                        + "Valid for 5 minutes.\n\n"
+                        + "Regards,\nSociety Portal"
+        );
     }
 }
