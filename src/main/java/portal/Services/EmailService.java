@@ -16,7 +16,7 @@ public class EmailService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     private void sendEmail(String to, String subject, String text) {
-
+  System.out.println("API KEY FULL = [" + apiKey + "]");
         System.out.println("🔥 Sending email to: " + to);
 
         String url = "https://api.brevo.com/v3/smtp/email";
