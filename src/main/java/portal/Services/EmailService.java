@@ -45,7 +45,8 @@ public class EmailService {
             Request request = new Request.Builder()
                     .url("https://api.brevo.com/v3/smtp/email")
                     .post(body)
-                    .addHeader("api-key", apiKey)
+        .addHeader("api-key", apiKey.replaceAll("\\s+", "")) // 🔥 FIX HERE
+
                     .addHeader("Content-Type", "application/json")
                     .build();
 
