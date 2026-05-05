@@ -29,6 +29,7 @@ public class EmailService {
     private void sendEmail(String to, String subject, String bodyText) {
         try {
                     System.out.println("API KEY: " + apiKey);
+        System.out.println("Length: " + (apiKey == null ? 0 : apiKey.length()));
 
             System.out.println("🔥 Sending email to: " + to);
 
