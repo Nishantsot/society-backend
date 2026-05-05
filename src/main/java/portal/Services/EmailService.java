@@ -17,8 +17,8 @@ public class EmailService {
     }
 
     public void sendResetOtp(String to, String otp) {
-        sendEmail(to, "Password Reset OTP",
-                "Your OTP is: " + otp);
+        sendEmail(to, "Society Portal - Password Reset OTP",
+                "Your OTP is: " + otp + "\nValid for 5 minutes.");
     }
 
     private void sendEmail(String to, String subject, String body) {
@@ -26,17 +26,17 @@ public class EmailService {
             System.out.println("🔥 Sending email to: " + to);
 
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("adgipsportal@gmail.com"); // MUST match Gmail
+            msg.setFrom("adgipsportal@gmail.com");
             msg.setTo(to);
             msg.setSubject(subject);
             msg.setText(body);
 
             mailSender.send(msg);
 
-            System.out.println("✅ Email Sent Successfully");
+            System.out.println("✅ Email Sent Successfully to: " + to);
 
         } catch (Exception e) {
-            System.out.println("❌ Email Failed");
+            System.out.println("❌ Email Failed to: " + to);
             e.printStackTrace();
         }
     }
