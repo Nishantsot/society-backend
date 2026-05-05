@@ -14,7 +14,8 @@ public class EmailService {
 
     private final OkHttpClient client = new OkHttpClient();
 
-    private final String SENDER_EMAIL = "adgipsportal@gmail.com"; // must be verified in Brevo
+    private final String SENDER_EMAIL = "adgipsportal@gmail.com";
+    private final String SENDER_NAME = "Society Portal";
 
     public void sendOtp(String to, String otp) {
         sendEmail(to, "Society Portal - OTP Verification",
@@ -28,32 +29,38 @@ public class EmailService {
 
     private void sendEmail(String to, String subject, String bodyText) {
         try {
-                    System.out.println("API KEY: " + apiKey);
-        System.out.println("Length: " + (apiKey == null ? 0 : apiKey.length()));
-
             System.out.println("🔥 Sending email to: " + to);
+            System.out.println("API Key Length: " + (apiKey != null ? apiKey.length() : 0));
 
-            String json = "{"
-                    + "\"sender\":{\"email\":\"" + SENDER_EMAIL + "\"},"
-                    + "\"to\":[{\"email\":\"" + to + "\"}],"
-                    + "\"subject\":\"" + subject + "\","
-                    + "\"textContent\":\"" + bodyText + "\""
-                    + "}";
+            String json = """
+                    {
+                      "sender": {
+                        "name": "%s",
+                        "email": "%s"
+                      },
+                      "to": [{"email": "%s"}],
+                      "subject": "%s",
+                      "textContent": "%s"
+                    }
+                    """.formatted(SENDER_NAME, SENDER_EMAIL, to, subject, bodyText);
 
-            RequestBody body = RequestBody.create(
-                    json, MediaType.parse("application/json"));
+            RequestBody body = RequestBody.create(json, MediaType.parse("application/json"));
 
             Request request = new Request.Builder()
                     .url("https://api.brevo.com/v3/smtp/email")
                     .post(body)
-        .addHeader("api-key", apiKey.replaceAll("\\s+", "")) // 🔥 FIX HERE
-
+                    .addHeader("api-key", apiKey.trim())           // trim extra spaces
                     .addHeader("Content-Type", "application/json")
                     .build();
 
-            Response response = client.newCall(request).execute();
-
-            System.out.println("✅ Email sent! Status: " + response.code());
+            try (Response response = client.newCall(request).execute()) {
+                String responseBody = response.body() != null ? response.body().string() : "";
+                
+                System.out.println("✅ Email sent! Status: " + response.code());
+                if (response.code() != 201) {
+                    System.out.println("Response Body: " + responseBody);
+                }
+            }
 
         } catch (Exception e) {
             System.out.println("❌ Email Failed to: " + to);
