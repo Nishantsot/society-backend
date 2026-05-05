@@ -1,50 +1,42 @@
 package portal.Services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class EmailService {
 
-    @Autowired
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
     public void sendOtp(String to, String otp) {
+        sendEmail(to, "Society Portal - OTP Verification",
+                "Your OTP is: " + otp + "\nValid for 5 minutes.");
+    }
+
+    public void sendResetOtp(String to, String otp) {
+        sendEmail(to, "Password Reset OTP",
+                "Your OTP is: " + otp);
+    }
+
+    private void sendEmail(String to, String subject, String body) {
         try {
             System.out.println("🔥 Sending email to: " + to);
 
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("adgipsportal@gmail.com"); // must be verified in Mailjet
+            msg.setFrom("adgipsportal@gmail.com"); // MUST match Gmail
             msg.setTo(to);
-            msg.setSubject("Society Portal - OTP Verification");
-            msg.setText("Your OTP is: " + otp + "\nValid for 5 minutes.");
+            msg.setSubject(subject);
+            msg.setText(body);
 
             mailSender.send(msg);
 
-            System.out.println("✅ OTP Email Sent");
+            System.out.println("✅ Email Sent Successfully");
 
         } catch (Exception e) {
             System.out.println("❌ Email Failed");
-            e.printStackTrace();
-        }
-    }
-
-    public void sendResetOtp(String to, String otp) {
-        try {
-            SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("adgipsportal@gmail.com");
-            msg.setTo(to);
-            msg.setSubject("Password Reset OTP");
-            msg.setText("Your OTP is: " + otp);
-
-            mailSender.send(msg);
-
-            System.out.println("✅ Reset Email Sent");
-
-        } catch (Exception e) {
-            System.out.println("❌ Reset Email Failed");
             e.printStackTrace();
         }
     }
