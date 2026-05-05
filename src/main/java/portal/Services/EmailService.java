@@ -28,6 +28,8 @@ public class EmailService {
 
     private void sendEmail(String to, String subject, String bodyText) {
         try {
+                    System.out.println("API KEY: " + apiKey);
+
             System.out.println("🔥 Sending email to: " + to);
 
             String json = "{"
