@@ -14,17 +14,14 @@ public class JwtUtil {
     @Value("${app.jwt.secret}")
     private String secret;
 
-    @Value("${app.jwt.expirationMs}")
+    @Value("${app.jwt.expirationMs:86400000}")  // default value added
     private long expiration;
 
-    // 🔐 generate signing key
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    // 🔥 GENERATE TOKEN
     public String generateToken(String email) {
-
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
@@ -33,7 +30,6 @@ public class JwtUtil {
                 .compact();
     }
 
-    // 🔍 EXTRACT EMAIL
     public String extractEmail(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -43,7 +39,6 @@ public class JwtUtil {
                 .getSubject();
     }
 
-    // ✅ VALIDATE TOKEN
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -51,7 +46,7 @@ public class JwtUtil {
                     .build()
                     .parseClaimsJws(token);
             return true;
-        } catch (JwtException e) {
+        } catch (Exception e) {
             return false;
         }
     }
