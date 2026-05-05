@@ -1,15 +1,20 @@
 package portal.Services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import okhttp3.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class EmailService {
 
-    private final JavaMailSender mailSender;
+    @Value("${brevo.api.key}")
+    private String apiKey;
+
+    private final OkHttpClient client = new OkHttpClient();
+
+    private final String SENDER_EMAIL = "adgipsportal@gmail.com"; // must be verified in Brevo
 
     public void sendOtp(String to, String otp) {
         sendEmail(to, "Society Portal - OTP Verification",
@@ -21,19 +26,30 @@ public class EmailService {
                 "Your OTP is: " + otp + "\nValid for 5 minutes.");
     }
 
-    private void sendEmail(String to, String subject, String body) {
+    private void sendEmail(String to, String subject, String bodyText) {
         try {
             System.out.println("🔥 Sending email to: " + to);
 
-            SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("adgipsportal@gmail.com");
-            msg.setTo(to);
-            msg.setSubject(subject);
-            msg.setText(body);
+            String json = "{"
+                    + "\"sender\":{\"email\":\"" + SENDER_EMAIL + "\"},"
+                    + "\"to\":[{\"email\":\"" + to + "\"}],"
+                    + "\"subject\":\"" + subject + "\","
+                    + "\"textContent\":\"" + bodyText + "\""
+                    + "}";
 
-            mailSender.send(msg);
+            RequestBody body = RequestBody.create(
+                    json, MediaType.parse("application/json"));
 
-            System.out.println("✅ Email Sent Successfully to: " + to);
+            Request request = new Request.Builder()
+                    .url("https://api.brevo.com/v3/smtp/email")
+                    .post(body)
+                    .addHeader("api-key", apiKey)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            System.out.println("✅ Email sent! Status: " + response.code());
 
         } catch (Exception e) {
             System.out.println("❌ Email Failed to: " + to);
